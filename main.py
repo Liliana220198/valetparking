@@ -15,4 +15,3 @@ total_clientes = 5
 te = 0.0
 dt = 0.0
 fin = 0.0
-
