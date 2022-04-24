@@ -1,7 +1,7 @@
 # VALET PARKING...
 # Liliana Flores Ortiz, Alan Alejandro Luna Gonzalez.
 
-import math
+import mpmath
 import random
 import simpy
 
@@ -45,7 +45,7 @@ def estancia(cliente, env):
                 i = 0
                 for i in range(total_clientes_aceptan):
                     R = random.random()
-                    llegada = -t_llegadas * math.log(R)
+                    llegada = -t_llegadas * mpmath.log(R)
                     yield env. timeout(llegada)
                     i += 1
                     env.process(cliente(env, 'Cliente %d' % i, personal))
