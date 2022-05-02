@@ -18,14 +18,15 @@ dt = 0.0  # duracion de servicio total
 fin = 0.0  # minuto en el que finaliza
 
 
-def estancia(cliente):
+def estancia(usuario):
     global dt
     R = random.random()
     tiempo = tiempo_estancia_max - tiempo_estancia_min
-    tiempo_estancia = tiempo_estancia_min + (tiempo*R)
+    tiempo_estancia = tiempo_estancia_min + (tiempo * R)
     yield env.timeout(tiempo_estancia)
-    print("\n Servicio utilizado %s en %.2f minutos" % (cliente, tiempo_estancia))
+    print("\n Servicio utilizado %s en %.2f minutos" % (usuario, tiempo_estancia))
     dt = dt + tiempo_estancia
+
 
 def cliente(env, name, personal):
     global te
@@ -43,17 +44,19 @@ def cliente(env, name, personal):
         print("<--- %s deja el estacionamiento en minuto %.2f" % (name, deja))
         fin = deja
 
+
 def principal(env, personal):
     i = 0
     for i in range(total_espacios):
         R = random.random()
         llegada = -t_llegadas * math.log(R)
-        yield env. timeout(llegada)
+        yield env.timeout(llegada)
         i += 1
         env.process(cliente(env, 'Cliente %d' % i, personal))
 
+
 if __name__ == "__main__":
-    print("....Bienvenido....")
+    print("\n....Bienvenido....\n")
     random.seed(semilla)
     env = simpy.Environment()
     personal = simpy.Resource(env, num_autos)
@@ -62,10 +65,10 @@ if __name__ == "__main__":
     print("\n------------------------------------")
     print("\nIndicadores obtenidos: ")
 
-    lpc = te / fin
-    print("\nLongitud promedio: %.2f" % lpc)
+    lp = te / fin
+    print("\nLongitud promedio: %.2f" % lp)
     tep = te / total_espacios
     print("Tiempo de espera promedio = %.2f" % tep)
-    upi = (dt / fin) / num_autos
-    print("Uso promedio del servicio 'Valet Parking' = %.2f" % upi)
+    ups = (dt / fin) / num_autos
+    print("Uso promedio del servicio 'Valet Parking' = %.2f" % ups)
     print("\n------------------------------------")
