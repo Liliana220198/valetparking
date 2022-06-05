@@ -1,7 +1,6 @@
 import math #proporciona acceso a las funciones matemáticas predefinidas
-import random #implementa generadores de números pseudoaleatorios para varias distribuciones
 
-num_personas = 1
+num_personas = 4
 tiempo_estancia_min = 15
 tiempo_estancia_max = 30
 t_llegadas = 20 #promedio de llegadas
@@ -74,7 +73,7 @@ if __name__ == "__main__":
     # c,  el incremento
     # X0 Valor inicial de la secuencia conocido como semilla
 
-    Xo = 0.7879
+    Xo = 0.7880
     m = 0.7
     a = 0.8
     c = 0.6
