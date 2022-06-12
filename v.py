@@ -1,10 +1,14 @@
-import math #proporciona acceso a las funciones matemáticas predefinidas
+import math
+#import numpy as np
+#import pandas as pd
+#from matplotlib import pyplot as plt
+#from numpy import log
 
 num_personas = 4
 tiempo_estancia_min = 15
 tiempo_estancia_max = 30
 t_llegadas = 20 #promedio de llegadas
-total_espacios = 5 # el total de espacios para los clientes
+total_espacios = 15 # el total de espacios para los clientes
 
 tiemposClientes = total_espacios * [{'llegada' : 0,'servicio' : 0,'salida' : 0, 'espera' : 0}]
 
@@ -71,7 +75,7 @@ if __name__ == "__main__":
     # m,  el módulo
     # a,  el multiplicador
     # c,  el incremento
-    # X0 Valor inicial de la secuencia conocido como semilla
+    # X0 Valor inicial de la secuencia conocido como semilla(seed).
 
     Xo = 0.7880
     m = 0.7
